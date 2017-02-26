@@ -54,7 +54,7 @@ I compute the camera matrix(intrinsic parameters) and distortion coefficients us
 ##Pipeline  
   
 <p align="center">
-    <img src="images/process.jpg" width="640" alt="process_image" /><br>
+    <img src="images/process.jpg" width="720" alt="process_image" /><br>
     <b>General Process</b><br>
 </p>
 
@@ -74,18 +74,21 @@ I used two approaches to find lane lines.
 a **Gradient** approach and a **Color** approach.
 The code for lane finding step is contained in the [`threshold.py`](threshold.py).  
 
-In gradient approach, I applied Sobel operator in the x, y directions. And calculated magnitude of the gradient in both the x and y directions and direction of the gradient. I used red channel of RGB instead of grayscaled image.
-And I combined them based on this code :
-!!!!`asdfasdfasdfasdfasdfdafdsfasdf`  
+In gradient approach, I applied Sobel operator in the x, y directions. And calculated magnitude of the gradient in both the x and y directions and direction of the gradient. I used red channel of RGB instead of grayscaled image.  
+And I combined them based on this code :  
   
+`gradient_comb[((sobelx>1) & (mag_img>1) & (dir_img>1)) | ((sobelx>1) & (sobely>1))] = 255`  
+    
 <p align="center">
     <img src="images/gradient.jpg" width="640" alt="gradient" /><br>
 </p>  
   
 
 In Color approach, I used red channel of RGB Color space and H,L,S channel of HSV Color space. Red color(255,0,0) is included in white(255,255,255) and yellow(255,255,0) color. That's way I used it. Also I used HLS Color space because we could be robust in brightness.  
-I combined them based on this code :
-!!!!`asdfasdfasdfasdfasdfdafdsfasdf`  
+I combined them based on this code :  
+
+`hls_comb[((s_img>1) & (l_img == 0)) | ((s_img==0) & (h_img>1) & (l_img>1)) | (R>1)] = 255`  
+  
 With this method, I could eliminate unnecessary shadow information.  
 
 <p align="center">
@@ -118,7 +121,7 @@ In the video, we could predict the position of lane lines by checking previous f
 In my code, if the frame is first frame or lost lane position, found first window position using histogram. Just accumulated non-zero pixels along the columns in the lower 2/3 of the image.  
 
 <p align="center">
-    <img src="images/histogram.jpg" width="640" alt="hist" /><br>
+    <img src="images/histogram.jpg" width="320" alt="hist" /><br>
 </p>  
   
   
@@ -127,7 +130,7 @@ In the course, we estimated curve line by using all non-zero pixels of windows. 
 **But it has a problem.**  
   
 <p align="center">
-    <img src="images/nonzero.jpg" width="640" alt="nonzero" /><br>
+    <img src="images/nonzero.jpg" width="480" alt="nonzero" /><br>
 </p>  
   
 This is one frame of [`challenge_video`](challenge_video.mp4).  
@@ -151,7 +154,7 @@ This is the result.
 ###6. Road information  
   
 <p align="center">
-    <img src="images/road_info.jpg" width="640" alt="road_info" /><br>
+    <img src="images/road_info.jpg" width="480" alt="road_info" /><br>
 </p>  
   
 In my output video, I included some road informations.
@@ -172,8 +175,17 @@ In my output video, I included some road informations.
 
 ##Result  
 
+>Project Video (Click for full HD video)
+  
+[![Video White](images/project_gif.gif?raw=true)](https://youtu.be/kad2xhUBbec)  
+  
+  
+  
+>Challenge Video (Click for full HD video)
+  
+[![Video White](images/challenge_result.gif?raw=true)](https://youtu.be/Eatyx87W5V4)
 
-
+# youtube link
 ---
 
 ###Discussion
