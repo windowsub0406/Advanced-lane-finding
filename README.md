@@ -45,7 +45,7 @@ We already completed [lane finding project](https://github.com/windowsub0406/fin
 
 The code for camera calibration step is contained in the [`calibration.py`](calibration.py).  
 
-I compute the camera matrix(intrinsic parameters) and distortion coefficients using the `cv2.calibrateCamera()` function with [20 9*6 sized chessboard images](camera_cal). And applied this distortion correction to the test image using the `cv2.undistort()` function.  
+I compute the camera matrix(intrinsic parameters) and distortion coefficients using the `cv2.calibrateCamera()` function with 20 9*6 sized [chessboard images](camera_cal). And applied this distortion correction to the test image using the `cv2.undistort()` function.  
   
 <p align="center">
     <img src="images/calibration.jpg" width="640" alt="calib_image" /><br>    
@@ -54,7 +54,7 @@ I compute the camera matrix(intrinsic parameters) and distortion coefficients us
 ##Pipeline  
   
 <p align="center">
-    <img src="images/process.jpg" width="720" alt="process_image" /><br>
+    <img src="images/process.jpg" alt="process_image" /><br>
     <b>General Process</b><br>
 </p>
 
@@ -193,4 +193,3 @@ In my output video, I included some road informations.
   
 I gave my best effort to succeed in challenge video. It wasn't easy. I have to change most of the parameters of project video. It means that the parameters strongly influenced by road status(bright or dark) or weather.  
 To keep the deadline, I didn't try harder challenge video yet. It looks really hard but It could be a great challenge to me.  
-  
