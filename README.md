@@ -1,6 +1,6 @@
 # Advanced Lane Finding Project  
   
-  # 0.8로 바꿨는지
+  
 <p align="center">
     <img src="images/main.jpg" width="480" alt="main_image" /><br>
     <b>result image(watch the full video below)</b><br>
@@ -22,8 +22,8 @@ We already completed [lane finding project](https://github.com/windowsub0406/fin
 [`main.py`](main.py) : main code  
 [`calibration.py`](calibration.py) : get calibration matrix  
 [`threshold.py`](threshold.py) : sobel edge & hls color  
-[`finding_lines.py`](finding_lines.py) : find & draw lane lines  
-[`finding_lines_w.py`](finding_lines_w.py) : find & draw lane lines using weighted average method (for the 'challenge video')  
+[`finding_lines.py`](finding_lines.py) : find & draw lane lines with sliding widow search  
+[`finding_lines_w.py`](finding_lines_w.py) : find & draw lane lines with sliding window search using weighted average method (for the [`challenge_video`](challenge_video.mp4))  
 
 
 ##The goals / steps of this project are the following:
@@ -62,6 +62,7 @@ If an image loaded, we immediately undo distortion of the image using calculated
   
 ###1. Crop Image  
   
+
 <p align="center">
     <img src="images/crop_img.jpg" width="640" alt="crop" /><br>
 </p>  
@@ -177,18 +178,19 @@ In my output video, I included some road informations.
 
 >Project Video (Click for full HD video)
   
-[![Video White](images/project_gif.gif?raw=true)](https://youtu.be/kad2xhUBbec)  
+[![Video White](images/project_gif.gif?raw=true)](https://youtu.be/z0U_zPPL9cY)  
   
   
   
 >Challenge Video (Click for full HD video)
   
-[![Video White](images/challenge_result.gif?raw=true)](https://youtu.be/Eatyx87W5V4)
+[![Video White](images/challenge_result.gif?raw=true)](https://youtu.be/xri9c7xW1S4)
 
-# youtube link
+  
 ---
-
-###Discussion
-
+  
+##Reflection  
+  
 I gave my best effort to succeed in challenge video. It wasn't easy. I have to change most of the parameters of project video. It means that the parameters strongly influenced by road status(bright or dark) or weather.  
-To keep the deadline, I didn't try harder challenge video yet. It looks really hard but It could be a great challenge to me.
+To keep the deadline, I didn't try harder challenge video yet. It looks really hard but It could be a great challenge to me.  
+  
