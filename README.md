@@ -145,7 +145,7 @@ If we fit curve lines with non-zero pixels, the result is here.
 As you can see, we couldn't detect exact lane positions. Because our gradient information have cracks information and it occurs error of position.  
 
 So, I used **`weighted average`** method.
-I put **0.8** weight value to color information and **0.2** to gradient information.  
+I put **0.8** weight value to color information and **0.2** to gradient information. And calculated x-average by using weighted average in the window. 
 This is the result.  
 <p align="center">
     <img src="images/weight.jpg" width="640" alt="weight" /><br>
