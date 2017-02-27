@@ -85,7 +85,7 @@ if __name__ == '__main__':
             #cv2.imshow('LR searching', searching_img)
 
             w_comb_result, w_color_result = draw_lane(searching_img, left_line, right_line)
-            cv2.imshow('w_comb_result', w_comb_result)
+            #cv2.imshow('w_comb_result', w_comb_result)
 
             # Drawing the lines back down onto the road
             color_result = cv2.warpPerspective(w_color_result, Minv, (c_cols, c_rows))
