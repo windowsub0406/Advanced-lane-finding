@@ -72,7 +72,7 @@ def gradient_combine(img, th_x, th_y, th_mag, th_dir):
     Find lane lines with gradient information of Red channel
     """
     rows, cols = img.shape[:2]
-    R = img[230:rows - 12, 0:cols, 2]
+    R = img[220:rows - 12, 0:cols, 2]
 
     sobelx = sobel_xy(R, 'x', th_x)
     #cv2.imshow('sobel_x', sobelx)
@@ -94,12 +94,12 @@ def hls_combine(img, th_h, th_l, th_s):
     hls = cv2.cvtColor(img, cv2.COLOR_BGR2HLS)
 
     rows, cols = img.shape[:2]
-    R = img[230:rows - 12, 0:cols, 2]
+    R = img[220:rows - 12, 0:cols, 2]
     _, R = cv2.threshold(R, 180, 255, cv2.THRESH_BINARY)
     #cv2.imshow('red!!!',R)
-    H = hls[230:rows - 12, 0:cols, 0]
-    L = hls[230:rows - 12, 0:cols, 1]
-    S = hls[230:rows - 12, 0:cols, 2]
+    H = hls[220:rows - 12, 0:cols, 0]
+    L = hls[220:rows - 12, 0:cols, 1]
+    S = hls[220:rows - 12, 0:cols, 2]
 
     h_img = ch_thresh(H, th_h)
     #cv2.imshow('HLS (H) threshold', h_img)
@@ -110,7 +110,7 @@ def hls_combine(img, th_h, th_l, th_s):
 
     # Two cases - lane lines in shadow or not
     hls_comb = np.zeros_like(s_img).astype(np.uint8)
-    hls_comb[((s_img > 1) & (l_img == 0)) | ((s_img == 0) & (h_img > 1) & (l_img > 1)) | (R > 1)] = 255
+    hls_comb[((s_img > 1) & (l_img == 0)) | ((s_img == 0) & (h_img > 1) & (l_img > 1))] = 255 # | (R > 1)] = 255
     #hls_comb[((s_img > 1) & (h_img > 1)) | (R > 1)] = 255
     return hls_comb
 
