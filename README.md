@@ -23,7 +23,7 @@ We already completed [lane finding project](https://github.com/windowsub0406/fin
 [`calibration.py`](calibration.py) : get calibration matrix  
 [`threshold.py`](threshold.py) : sobel edge & hls color  
 [`finding_lines.py`](finding_lines.py) : find & draw lane lines with sliding widow search  
-[`finding_lines_w.py`](finding_lines_w.py) : find & draw lane lines with sliding window search using weighted average method (for the [`challenge_video`](challenge_video.mp4))  
+[`finding_lines_w.py`](finding_lines_w.py) : find & draw lane lines with sliding window search using weighted average method (for the [`challenge_video`](challenge_video.mp4))
 
 
 ## The goals / steps of this project are the following:
