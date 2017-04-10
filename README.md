@@ -26,7 +26,7 @@ We already completed [lane finding project](https://github.com/windowsub0406/fin
 [`finding_lines_w.py`](finding_lines_w.py) : find & draw lane lines with sliding window search using weighted average method (for the [`challenge_video`](challenge_video.mp4))  
 
 
-##The goals / steps of this project are the following:
+## The goals / steps of this project are the following:
 
 * Compute the camera calibration matrix and distortion coefficients given a set of chessboard images.
 * Apply a distortion correction to raw images.
@@ -39,9 +39,9 @@ We already completed [lane finding project](https://github.com/windowsub0406/fin
 
 ---
 
-##Camera Calibration
+## Camera Calibration
 
-####When a camera looks at 3D objects in the real world and transforms them into a 2D image, it's not perfect because of a distortion. And the distortion brings an erroneous information.(e.g. changed object shape, bent lane lines) So, we have to undo the distortion for getting useful data. 
+#### When a camera looks at 3D objects in the real world and transforms them into a 2D image, it's not perfect because of a distortion. And the distortion brings an erroneous information.(e.g. changed object shape, bent lane lines) So, we have to undo the distortion for getting useful data. 
 
 The code for camera calibration step is contained in the [`calibration.py`](calibration.py).  
 
@@ -51,7 +51,7 @@ I compute the camera matrix(intrinsic parameters) and distortion coefficients us
     <img src="images/calibration.jpg" width="640" alt="calib_image" /><br>    
 </p>
   
-##Pipeline  
+## Pipeline  
   
 <p align="center">
     <img src="images/process.jpg" alt="process_image" /><br>
@@ -60,7 +60,7 @@ I compute the camera matrix(intrinsic parameters) and distortion coefficients us
 
 If an image loaded, we immediately undo distortion of the image using calculated calibration information.
   
-###1. Crop Image  
+### 1. Crop Image  
   
 
 <p align="center">
@@ -69,7 +69,7 @@ If an image loaded, we immediately undo distortion of the image using calculated
 
 In image, a bonnet and background are not necessary to find lane lines. Therefore, I cropped the inconsequential parts.  
   
-###2. Lane Finding  
+### 2. Lane Finding  
   
 I used two approaches to find lane lines.  
 a **Gradient** approach and a **Color** approach.
@@ -104,7 +104,7 @@ This is combination of color and gradient thresholds.
 </p>  
   
   
-###3. Perspective Transform  
+### 3. Perspective Transform  
   
  We can assume the road is a flat plane. Pick 4 points of straight lane lines and apply perspective transform to the lines look straight. It is also called `Bird's eye view`.  
   
@@ -113,7 +113,7 @@ This is combination of color and gradient thresholds.
 </p>  
 
 
-###4. Sliding Window Search  
+### 4. Sliding Window Search  
   
 The code for Sliding window search is contained in the [`finding_lines.py`](finding_lines.py) or [`finding_lines_w.py`](finding_lines.py).  
 
@@ -152,7 +152,7 @@ This is the result.
 </p>  
   
 
-###6. Road information  
+### 5. Road information  
   
 <p align="center">
     <img src="images/road_info.jpg" width="480" alt="road_info" /><br>
@@ -160,21 +160,21 @@ This is the result.
   
 In my output video, I included some road informations.
 
-####Lane Info
+#### Lane Info
 * estimate lane status that is a straight line, or left/right curve. To decide this, I considered a radius of curvature and a curve direction.  
   
-####Curvature
+#### Curvature
 * for calculating a radius of curvature in real world, I used U.S. regulations that require a minimum lane width of 3.7 meters. And assumed the lane's length is about 30m.  
   
-####Deviation
+#### Deviation
 * Estimated current vehicle position by comparing image center with center of lane line.  
 
-####Mini road map
+#### Mini road map
 * The small mini map visualizes above information.
 
 ---
 
-##Result  
+## Result  
 
 >Project Video (Click for full HD video)
   
@@ -189,7 +189,7 @@ In my output video, I included some road informations.
   
 ---
   
-##Reflection  
+## Reflection  
   
 I gave my best effort to succeed in challenge video. It wasn't easy. I have to change most of the parameters of project video. It means that the parameters strongly influenced by road status(bright or dark) or weather.  
 To keep the deadline, I didn't try harder challenge video yet. It looks really hard but It could be a great challenge to me.  
